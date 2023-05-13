@@ -115,30 +115,30 @@ model.fit(X_train_vectorized, y_train)
 
 # Evaluate the model performance on the testing set
 y_pred = model.predict(X_test_vectorized)
-print(confusion_matrix(y_test, y_pred))
+# print(confusion_matrix(y_test, y_pred))
 print(classification_report(y_test, y_pred))
 
 # Visualize the confusion matrix using matplotlib
-cm = confusion_matrix(y_test, y_pred)
-plt.matshow(cm)
-plt.title('Confusion matrix')
-plt.colorbar()
-plt.ylabel('True label')
-plt.xlabel('Predicted label')
-plt.show()
+# cm = confusion_matrix(y_test, y_pred)
+# plt.matshow(cm)
+# plt.title('Confusion matrix')
+# plt.colorbar()
+# plt.ylabel('True label')
+# plt.xlabel('Predicted label')
+# plt.show()
 #my graphs
 from sklearn.metrics import precision_recall_curve
 
 # Compute precision and recall for each class
-precision, recall, _ = precision_recall_curve(y_test, y_pred, pos_label='positive')
+# precision, recall, _ = precision_recall_curve(y_test, y_pred, pos_label='positive')
 
-# Plot precision-recall curve
-plt.plot(recall, precision, label='Precision-Recall curve')
-plt.xlabel('Recall')
-plt.ylabel('Precision')
-plt.title('Precision-Recall Curve')
-plt.legend(loc='lower left')
-plt.show()
+# # Plot precision-recall curve
+# plt.plot(recall, precision, label='Precision-Recall curve')
+# plt.xlabel('Recall')
+# plt.ylabel('Precision')
+# plt.title('Precision-Recall Curve')
+# plt.legend(loc='lower left')
+# plt.show()
 #my graphs
 
 # Test the model on new input
@@ -146,5 +146,49 @@ plt.show()
 # new_input_vectorized = vectorizer.transform(new_input)
 # print(model.predict(new_input_vectorized))
 
+# import matplotlib.pyplot as plt
+# import pandas as pd
+
+# # load dataset
+# data = pd.read_csv('IMDB.csv')
+
+# # add a column for review length
+# data['review'] = data['review'].apply(lambda x: len(x.split()))
+
+# # create a scatter plot
+# plt.scatter(data['review'], data['sentiment'])
+
+# # add labels and title
+# plt.xlabel('Review Length')
+# plt.ylabel('Sentiment')
+# plt.title('Correlation between Review and Sentiment')
+
+# # display the plot
+# plt.show()
 
 
+# from wordcloud import WordCloud
+# import matplotlib.pyplot as plt
+
+# # Read in text from a file
+# with open('IMDB.csv', 'r') as file:
+#     text = file.read()
+
+# # Create word cloud
+# wordcloud = WordCloud(width=800, height=800, background_color='white', min_font_size=10).generate(text)
+
+# # Display the generated image:
+# plt.figure(figsize=(8, 8), facecolor=None)
+# plt.imshow(wordcloud)
+# plt.axis("off")
+# plt.tight_layout(pad=0)
+
+# # Save the image
+# wordcloud.to_file("wordcloud.png")
+
+
+
+from sklearn.metrics import accuracy_score
+
+accuracy = accuracy_score(y_test, y_pred)
+print("Accuracy:", accuracy)
